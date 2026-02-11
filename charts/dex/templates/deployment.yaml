@@ -64,7 +64,7 @@ spec:
         - name: {{ $key }}
           valueFrom:
             secretKeyRef:
-              name: dex-secret
+              name: dex-secrets
               key: {{ template "dex.envkey" $key }}
         {{- end }}
         ports:
