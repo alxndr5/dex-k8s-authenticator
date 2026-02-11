@@ -58,8 +58,8 @@ spec:
         {{/* Bugfix - https://github.com/dexidp/dex/issues/2082 */}}
         - name: KUBERNETES_POD_NAMESPACE
           valueFrom:
-          fieldRef:
-            fieldPath: metadata.namespace
+            fieldRef:
+              fieldPath: metadata.namespace
         {{- range $key, $value := .Values.envSecrets }}
         - name: {{ $key }}
           valueFrom:
