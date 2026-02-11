@@ -55,6 +55,11 @@ spec:
         imagePullPolicy: {{ .Values.image.pullPolicy }}
         command: ["/usr/local/bin/dex", "serve", "/etc/dex/config.yaml"]
         env:
+        {{/* Bugfix - https://github.com/dexidp/dex/issues/2082 */}}
+        - name: KUBERNETES_POD_NAMESPACE
+          valueFrom:
+          fieldRef:
+            fieldPath: metadata.namespace
         {{- range $key, $value := .Values.envSecrets }}
         - name: {{ $key }}
           valueFrom:
